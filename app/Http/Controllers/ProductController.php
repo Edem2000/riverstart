@@ -130,15 +130,16 @@ class ProductController extends Controller
                 $product->categories()->attach($category);
             }
         }
-        if($data->name){
-            $product->name = $data->name;
-        }
-        if($data->description){
-            $product->description = $data->description;
-        }
-        if($data->price){
-            $product->price = $data->price;
-        }
+        $product->update($request->all());
+//        if($data->name){
+//            $product->name = $data->name;
+//        }
+//        if($data->description){
+//            $product->description = $data->description;
+//        }
+//        if($data->price){
+//            $product->price = $data->price;
+//        }
         $product->save();
         return response()->json('Successfully edited', 200);
     }
